@@ -1,28 +1,26 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+creata file ~/.gemrc if not exists then add following line to it for fast installation of gems(no  docs)
+gem: --no-document
+---------------------------------------------------------------------------------------------------------
 
-Things you may want to cover:
+You can specify which rails version u need to use and which DBMS u want to use
 
-* Ruby version
+rails _rails_version_ new app_name -d mysql
 
-* System dependencies
+---------------------------------------------------------------------------------------------------------
 
-* Configuration
+Here is how you create a controller and model following naming convention
 
-* Database creation
+bundle exec rails g controller posts (controler name in small letter bu its pural)
+bundle exec rails g model Post(singular but start with Captial Letter but its corresponding table will be plural like posts)
 
-* Database initialization
+---------------------------------------------------------------------------------------------------------
 
-* How to run the test suite
+using paperclip for file upload (need imagemagick)
+sudo apt-get install imagemagick -y
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
+---------------------------------------------------------------------------------------------------------
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
