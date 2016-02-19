@@ -1,0 +1,47 @@
+<div class="posts-wrapper" id="post-id-<%=post.id%>">
+	<div class="post">
+		<div class="post-head">
+			<div class="thumb-img"></div>
+			<div class="user-name">
+				<div class="col-sm-9">
+					<%= post.user.user_name %>
+				</div>
+				<% if post.user == current_user %>
+					<div class="col-sm-3">
+						<%= link_to 'Delete This Post', post_path(post), method: :delete, remote: true, data: { confirm: 'Do You want to delete this post?' } %>
+					</div>
+				<% end %>
+			</div>			
+		</div>
+		<div class="image center-block">
+		  <%= link_to (image_tag post.image.url(:medium), :class => "img-responsive"), post_path(post) %>
+		</div>
+		<div class="post-bottom">
+			<div class="caption">
+				<div class="caption-content">
+					<div class="user-name">
+						<%= post.user.user_name %>
+					</div>	
+				</div>
+				<p><%= post.caption %></p>
+				<div class="comments" id="comments_<%=post.id%>">
+					<% if post.comments %>
+						<% post.comments.each do |comment| %>
+							<%= render 'comments/comment', {comment: comment, post: post} %>
+						<% end %>
+					<% end %>					
+				</div>
+			</div>
+			<div class="comment-like-form row">
+				<div class="like-button col-sm-1">
+					<span class="glyphicon glyphicon-heart-empty"></span>
+				</div>
+				<div class="comment-form col-sm-11">
+					<%= form_for([post, post.comments.new], remote: true) do |f| %>
+						<%= f.text_field :content, placeholder: 'Comment.... Here.......', class: 'comment_content', id: "comment_content_#{post.id}" %>
+					<% end %>					
+				</div>
+			</div>
+		</div>			
+	</div>	
+</div>

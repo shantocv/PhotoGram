@@ -22,5 +22,14 @@ sudo apt-get install imagemagick -y
 
 ---------------------------------------------------------------------------------------------------------
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+using devise for authenticatiom
+gem 'devise' 
+
+bundle exec rails g devise:install
+bundle exec rails g devise User (if u using user table)
+bundle exec rails g devise:views
+add config.action_mailer.default_url_options = { host: 'localhost', port: 3000 } in config/environments/development.rb
+
+---------------------------------------------------------------------------------------------------------
+
+bundle exec rails g model Comment user:references post:references content:text 
